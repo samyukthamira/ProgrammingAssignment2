@@ -2,14 +2,12 @@
 
 ## makeCacheMatrix creates a special "matrix", which is really a list containing a function to set the values of the matrix, get the matrix, set the inverse matrix and get the inverse matrix.
 
-set the value of the vector
-get the value of the vector
-set the value of the mean
-get the value of the mean
+
 
 makeCacheMatrix <- function(x = matrix()) 
 {
-        nv<- NULL
+    inv<- NULL
+        
     set<- function(y)
     {
         x<<- y
@@ -17,6 +15,7 @@ makeCacheMatrix <- function(x = matrix())
     }
     
     get<- function() {x}
+        
     setInv<- function(inverse)
     {
         inv<<- inverse
@@ -25,6 +24,7 @@ makeCacheMatrix <- function(x = matrix())
     getInv<- function() inv
     
     list(set = set, get = get, setInv = setInv, getInv = getInv)
+    
 }
 
 
@@ -33,7 +33,7 @@ makeCacheMatrix <- function(x = matrix())
 
 cacheSolve <- function(x, ...) 
 {
-       inv<- x$getInv()    #returns the inverse of x and stores it in the variable inv
+     inv<- x$getInv()    #returns the inverse of x and stores it in the variable inv
     
     if(!is.null(inv))    #check if inverse of x has already been calculated
     {
@@ -44,5 +44,5 @@ cacheSolve <- function(x, ...)
     theMatrix<- x$get()      
     inv<- solve(theMatrix, ...)          #computes the inverse of x (since it has not already been done) and caches it. 
     x$setInv(inv)
-    inv
+    inv 
 }

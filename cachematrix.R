@@ -2,10 +2,6 @@
 
 ## makeCacheMatrix creates a special "matrix", which is really a list containing a function to set the values of the matrix, get the matrix, set the inverse matrix and get the inverse matrix.
 
-set the value of the vector
-get the value of the vector
-set the value of the mean
-get the value of the mean
 
 makeCacheMatrix <- function(x = matrix()) 
 {
